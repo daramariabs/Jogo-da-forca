@@ -28,9 +28,7 @@ public class Main {
 			break;
 		}
 		
-		sc.close();
-		
-		
+		sc.close();	
     }
 	
 	public static void gerenciarTemas() {
@@ -53,6 +51,7 @@ public class Main {
 			
 			switch(opcao) {
 			case 1:
+				// Falta implementar o não cadastro de palavras repetidas.
 				System.out.println("Informe os temas: ");
 				for (int i = 0; i < 3; i++) {
 					 	matrizTemas[i][0] = sc.nextLine().toLowerCase();
@@ -60,6 +59,7 @@ public class Main {
 				break;
 				
 			case 2:
+				//Falta finalizar a exclusão do tema
 				System.out.println("Temas cadastrados:");
 				for (int i = 0; i < 3; i++) {
 						System.out.println(matrizTemas[i][0].toLowerCase());
@@ -98,7 +98,6 @@ public class Main {
 			sc.nextLine();
 			
 		}
-		
 		
 		sc.close();
 	}
