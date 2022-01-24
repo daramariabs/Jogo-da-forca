@@ -3,33 +3,56 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		menu();
-	}
-	
-	public static void menu() {
 		Scanner sc = new Scanner(System.in);
 		int escolhaMenu;
+		String[][] matrizJogo = new String[3][3];
 		
-		System.out.println("----------------------");
-		System.out.println("MENU");
-		System.out.println("----------------------");
-		System.out.println("1. Gerenciar Temas");
-		System.out.println("2. Gerenciar Palavras");
-		System.out.println("3. Jogar");
-		System.out.println("4. Sair");
-		System.out.println("----------------------");
-		System.out.print("O que você deseja fazer? ");
+		matrizJogo[0][0] = "Cidade";
+		matrizJogo[0][1] = "Palmas";
+		matrizJogo[0][2] = "Paraiso";
+		matrizJogo[1][0] = "Frutas";
+		matrizJogo[1][1] = "Morango";
+		matrizJogo[1][2] = "Uva";
+		matrizJogo[2][0] = "Pais";
+		matrizJogo[2][1] = "Brasil";
+		matrizJogo[2][2] = "Mexico";
 		
-		escolhaMenu = sc.nextInt();
-		
-		switch(escolhaMenu){
-		case 1:
-			gerenciarTemas();
-			break;
-		}
+		lerMatriz(matrizJogo);
+//		do {
+//			System.out.println("----------------------");
+//			System.out.println("MENU");
+//			System.out.println("----------------------");
+//			System.out.println("1. Gerenciar Temas");
+//			System.out.println("2. Gerenciar Palavras");
+//			System.out.println("3. Jogar");
+//			System.out.println("4. Sair");
+//			System.out.println("----------------------");
+//			System.out.print("O que você deseja fazer? ");
+//			escolhaMenu = sc.nextInt();
+//			
+//			if (escolhaMenu == 1) {
+//				gerenciarTemas();
+//			}
+//			else if(escolhaMenu == 2) {
+//				System.out.println("Gerenciar Palavras");
+//			}
+//			else if(escolhaMenu == 3) {
+//				System.out.println("Jogar");
+//			}
+//			
+//		}while(escolhaMenu != 4);
 		
 		sc.close();	
-    }
+	}
+	
+	public static void lerMatriz(String[][] matriz) {
+		for(int i =0; i< 3; i++) {
+			for (int j= 0; j < 3; j++) {
+				System.out.print(matriz[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
 	
 	public static void gerenciarTemas() {
 		Scanner sc = new Scanner(System.in);
@@ -43,6 +66,7 @@ public class Main {
 		System.out.println("1. Cadastrar Tema");
 		System.out.println("2. Excluir Tema ");
 		System.out.println("3. Buscar tema ");
+		System.out.println("0. Sair ");
 		System.out.println("--------------------");
 		opcao = sc.nextInt();
 		sc.nextLine();
@@ -95,7 +119,7 @@ public class Main {
 			System.out.println("0. Sair ");
 			System.out.println("--------------------");
 			opcao = sc.nextInt();
-			sc.nextLine();
+
 			
 		}
 		
