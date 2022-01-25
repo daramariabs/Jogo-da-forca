@@ -7,20 +7,6 @@ public class Main {
 		int escolhaMenu;
 		String[][] matrizJogo = new String[50][50];
 		
-		matrizJogo[0][0] = "cidade";
-		matrizJogo[0][1] = "palmas";
-		matrizJogo[0][2] = "paraiso";
-		matrizJogo[1][0] = "frutas";
-		matrizJogo[1][1] = "morango";
-		matrizJogo[1][2] = "uva";
-		matrizJogo[2][0] = "pais";
-		matrizJogo[2][1] = "brasil";
-		matrizJogo[2][2] = "mexico";
-		matrizJogo[3][0] = "cores";
-		matrizJogo[3][1] = "azul";
-		matrizJogo[3][2] = "rosa";
-		matrizJogo[3][3] = "amarelo";
-		
 		lerMatriz(matrizJogo);
 		
 		System.out.println("----------------------");
@@ -47,10 +33,71 @@ public class Main {
 		sc.close();	
 	}
 	
-	public static void lerMatriz(String[][] matriz) {
-		for(int i =0; i< 10; i++) {
-			for (int j= 0; j < 10; j++) {
-				System.out.print(matriz[i][j] + " ");
+	public static void lerMatriz(String[][] matrizJogo) {
+		
+		matrizJogo[0][0] = "cidade";
+		matrizJogo[0][1] = "palmas";
+		matrizJogo[0][2] = "paraiso";
+		matrizJogo[0][3] = "salvador";
+		matrizJogo[0][4] = "manaus";
+		matrizJogo[0][5] = "recife";
+		matrizJogo[0][6] = "fortaleza";
+		matrizJogo[0][7] = "sorocaba";
+		matrizJogo[0][8] = "aracaju";
+		matrizJogo[0][9] = "betim";
+		matrizJogo[0][10] = "pelotas";
+		
+		matrizJogo[1][0] = "fruta";
+		matrizJogo[1][1] = "morango";
+		matrizJogo[1][2] = "uva";
+		matrizJogo[1][3] = "banana";
+		matrizJogo[1][4] = "ameixa";
+		matrizJogo[1][5] = "melancia";
+		matrizJogo[1][6] = "abacaxi";
+		matrizJogo[1][7] = "pera";
+		matrizJogo[1][8] = "pessego";
+		matrizJogo[1][9] = "laranja";
+		matrizJogo[1][10] = "manga";
+		
+		matrizJogo[2][0] = "pais";
+		matrizJogo[2][1] = "brasil";
+		matrizJogo[2][2] = "mexico";
+		matrizJogo[2][3] = "barbados";
+		matrizJogo[2][4] = "canada";
+		matrizJogo[2][5] = "jamaica";
+		matrizJogo[2][6] = "paraguai";
+		matrizJogo[2][7] = "irlanda";
+		matrizJogo[2][8] = "portugal";
+		matrizJogo[2][9] = "israel";
+		matrizJogo[2][10] = "argentina";
+		
+		matrizJogo[3][0] = "cor";
+		matrizJogo[3][1] = "azul";
+		matrizJogo[3][2] = "rosa";
+		matrizJogo[3][3] = "amarelo";
+		matrizJogo[3][4] = "branco";
+		matrizJogo[3][5] = "verde";
+		matrizJogo[3][6] = "cinza";
+		matrizJogo[3][7] = "bronze";
+		matrizJogo[3][8] = "creme";
+		matrizJogo[3][9] = "dourado";
+		matrizJogo[3][10] = "laranja";
+		
+		matrizJogo[4][0] = "animal";
+		matrizJogo[4][1] = "abelha";
+		matrizJogo[4][2] = "babuino";
+		matrizJogo[4][3] = "cachorro";
+		matrizJogo[4][4] = "foca";
+		matrizJogo[4][5] = "golfinho";
+		matrizJogo[4][6] = "jaguar";
+		matrizJogo[4][7] = "lagarto";
+		matrizJogo[4][8] = "ovelha";
+		matrizJogo[4][9] = "papagaio";
+		matrizJogo[4][10] = "urubu";
+		
+		for(int i =0; i < 10; i++) {
+			for (int j= 0; j < 20 ; j++) {
+				System.out.print(matrizJogo[i][j] + " ");
 			}
 			System.out.println();
 		}
@@ -145,6 +192,7 @@ public class Main {
 		sc.close();
 	}
 	
+	
 	public static void gerenciarPalavras(String[][] matrizPalavras) {
 		Scanner sc = new Scanner(System.in);
 		
@@ -229,10 +277,10 @@ public class Main {
 				System.out.print("Informe o TEMA que deseja litar as palavras: ");
 				buscaTema = sc.nextLine().toLowerCase();
 				
-				for (int i = 0; i < 10; i++) {
+				for (int i = 0; i < 20; i++) {
 					if (buscaTema.equals(matrizPalavras[i][0])) {
 						System.out.print("No tema "+ matrizPalavras[i][0] + " temos as palavras: ");
-						for(int j = 1; j < 10; j ++) {
+						for(int j = 1; j < 20; j ++) {
 							System.out.print(matrizPalavras[i][j] + " ");		
 						}
 						
