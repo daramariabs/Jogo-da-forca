@@ -28,7 +28,7 @@ public class Main {
 			gerenciarPalavras(matrizJogo);
 		}
 
-		lerMatriz(matrizJogo);
+		//lerMatriz(matrizJogo);
 		
 		sc.close();	
 	}
@@ -112,17 +112,16 @@ public class Main {
 		String excluiTema = "";
 		String buscaTema = "";
 		
-		System.out.println("--------------------");
-		System.out.println("Grenciador de temas");
-		System.out.println("1. Cadastrar Tema");
-		System.out.println("2. Excluir Tema ");
-		System.out.println("3. Buscar tema ");
-		System.out.println("0. Sair ");
-		System.out.println("--------------------");
-		opcao = sc.nextInt();
-		sc.nextLine();
-		
-		while(opcao != 0) {
+		do {
+			System.out.println("--------------------");
+			System.out.println("Grenciador de temas");
+			System.out.println("1. Cadastrar Tema");
+			System.out.println("2. Excluir Tema ");
+			System.out.println("3. Buscar tema ");
+			System.out.println("0. Sair ");
+			System.out.println("--------------------");
+			opcao = sc.nextInt();
+			sc.nextLine();
 			
 			if(opcao == 1) {
 				//Cadastro de Temas
@@ -172,22 +171,9 @@ public class Main {
 				
 				if(contPesquisa == 0) {
 					System.out.println("Tema não encontrado!");	
-				}
-				
-			}
-			//Final dos ifs
-			
-			System.out.println("--------------------");
-			System.out.println("Grenciador de temas");
-			System.out.println("1. Cadastrar Tema");
-			System.out.println("2. Excluir Tema ");
-			System.out.println("3. Buscar tema ");
-			System.out.println("0. Sair ");
-			System.out.println("--------------------");
-			opcao = sc.nextInt();
-			sc.nextLine();
-			
-		}		
+				}	
+			}	
+		}while(opcao != 0);	
 		
 		sc.close();
 	}
