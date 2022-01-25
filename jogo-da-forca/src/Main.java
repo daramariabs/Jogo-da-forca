@@ -17,6 +17,9 @@ public class Main {
 		matrizJogo[2][1] = "brasil";
 		matrizJogo[2][2] = "mexico";
 		matrizJogo[3][0] = "cores";
+		matrizJogo[3][1] = "azul";
+		matrizJogo[3][2] = "rosa";
+		matrizJogo[3][3] = "amarelo";
 		
 		lerMatriz(matrizJogo);
 		
@@ -30,11 +33,14 @@ public class Main {
 		System.out.println("----------------------");
 		System.out.print("O que você deseja fazer? ");
 		escolhaMenu = sc.nextInt();
+		sc.nextLine();
 		
 		if (escolhaMenu == 1) {
 			gerenciarTemas(matrizJogo);
 		}
-		
+		else if(escolhaMenu == 2) {
+			gerenciarPalavras(matrizJogo);
+		}
 
 		lerMatriz(matrizJogo);
 		
@@ -75,7 +81,7 @@ public class Main {
 				//Cadastro de Temas
 				System.out.print("Informe o tema que deseja cadastrar: ");
 				novoTema = sc.nextLine().toLowerCase();
-				for(int i =0; i< 5; i++) {
+				for(int i =0; i< 10; i++) {
 					if(novoTema.equals(matrizTemas[i][0])) {
 						System.out.println("O tema já existe. Impossivel cadastrar!");
 						break;
@@ -91,7 +97,7 @@ public class Main {
 				//Excluir Temas
 				System.out.print("Informe o tema que deseja Excluir: ");
 				excluiTema = sc.nextLine().toLowerCase();
-				for(int i = 0; i< 5; i++) {
+				for(int i = 0; i< 10; i++) {
 					if(excluiTema.equals(matrizTemas[i][0])) {
 						if(matrizTemas[i][1] == null) {
 							matrizTemas[i][0] = null;
@@ -109,7 +115,7 @@ public class Main {
 				System.out.print("Informe o tema que deseja buscar: ");
 				buscaTema = sc.nextLine().toLowerCase();
 				
-				for (int i = 0; i < 5; i++) {
+				for (int i = 0; i < 10; i++) {
 					if (buscaTema.equals(matrizTemas[i][0])) {
 						System.out.println("Tema encontrado: " + matrizTemas[i][0]);
 						contPesquisa++;
@@ -134,13 +140,86 @@ public class Main {
 			opcao = sc.nextInt();
 			sc.nextLine();
 			
-		}
+		}		
+		
+		sc.close();
+	}
+	
+	public static void gerenciarPalavras(String[][] matrizPalavras) {
+		Scanner sc = new Scanner(System.in);
+		
+		int opcao, contPesquisa;
+		contPesquisa = 0;
+		String temaEscolhido, palavraCadastro, palavraExcluida;
 		
 		
-		
-		
+		do {
+			System.out.println("--------------------");
+			System.out.println("GERENCIADOS DE PALAVRAS");
+			System.out.println("1. Cadastrar Palavras");
+			System.out.println("2. Excluir Palavras ");
+			System.out.println("3. Buscar Palavras ");
+			System.out.println("4. Listar Palavras pelo tema ");
+			System.out.println("0. Sair ");
+			System.out.println("--------------------");
+			opcao = sc.nextInt();
+			sc.nextLine();
+			
+			if(opcao == 1) {
+				System.out.println("Escolha um TEMA para cadastrar uma palavra: ");
+				temaEscolhido = sc.nextLine().toLowerCase();
+				
+				for(int i = 0; i < 10; i++) {
+					if(temaEscolhido.equals(matrizPalavras[i][0])) {
+						System.out.println("Informe a palavra: ");
+						palavraCadastro = sc.nextLine().toLowerCase();
+						for(int j = 1; j < 10; j++) {
+							if(palavraCadastro.equals(matrizPalavras[i][j])) {
+								System.out.println("Essa palavra ja existe!");
+								break;
+							}
+							else if(matrizPalavras[i][j] == null) {
+								matrizPalavras[i][j] = palavraCadastro;
+								System.out.println("Palavra cadastrada.");
+								break;
+							}
+						}
+						contPesquisa++;
+					}
+				}
+				if(contPesquisa == 0) {
+					System.out.println("Tema não encontrado!");
+					
+				}
+			}
+			else if(opcao == 2) {
+				//CONTINUAR A LOGICA DO EXCLUIR
+				System.out.println("Informe a palavra que deseja exluir: ");
+				palavraExcluida = sc.nextLine().toLowerCase();
+				
+				for (int i = 0; i < 10; i++) {
+					for(int j = 1; j < 10; j++) {
+						if(palavraExcluida.equals(matrizPalavras[i][j])) {
+							matrizPalavras[i][j] = null;
+							System.out.println("Palavra excluida");
+							break;
+						}
+					}
+				}
+			}
+			else if(opcao == 3) {
+				System.out.println("3. Buscar Palavras ");
+			}
+			else if(opcao == 4) {
+				System.out.println("4. Listar Palavras pelo tema ");
+			}
+			
+		}while(opcao != 0);
+			
 		
 		sc.close();
 	}
 
 }
+
+
