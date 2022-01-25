@@ -150,8 +150,7 @@ public class Main {
 		
 		int opcao, contPesquisa;
 		contPesquisa = 0;
-		String temaEscolhido, palavraCadastro, palavraExcluida;
-		
+		String temaEscolhido, palavraCadastro, palavraExcluida, buscaPalavra, buscaTema;
 		
 		do {
 			System.out.println("--------------------");
@@ -208,10 +207,39 @@ public class Main {
 				}
 			}
 			else if(opcao == 3) {
-				System.out.println("3. Buscar Palavras ");
+				contPesquisa = 0;
+				System.out.print("Informe a PALAVRA que deseja buscar: ");
+				buscaPalavra = sc.nextLine().toLowerCase();
+				
+				for (int i = 0; i < 10; i++) {
+					for(int j = 0; j < 10; j ++) {
+						if (buscaPalavra.equals(matrizPalavras[i][j])) {
+							System.out.println("PALAVRA encontrada no tema: " + matrizPalavras[i][0].toUpperCase());
+							contPesquisa++;
+							break;
+						}
+					}	
+				}
+				
+				if(contPesquisa == 0) {
+					System.out.println("PALAVRA não encontrada!");	
+				}
 			}
 			else if(opcao == 4) {
-				System.out.println("4. Listar Palavras pelo tema ");
+				System.out.print("Informe o TEMA que deseja litar as palavras: ");
+				buscaTema = sc.nextLine().toLowerCase();
+				
+				for (int i = 0; i < 10; i++) {
+					if (buscaTema.equals(matrizPalavras[i][0])) {
+						System.out.print("No tema "+ matrizPalavras[i][0] + " temos as palavras: ");
+						for(int j = 1; j < 10; j ++) {
+							System.out.print(matrizPalavras[i][j] + " ");		
+						}
+						
+					}
+						
+				}
+				System.out.println();
 			}
 			
 		}while(opcao != 0);
