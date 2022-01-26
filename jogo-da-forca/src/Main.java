@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.util.Random;
 public class Main {
 
 	public static void main(String[] args) {
@@ -26,6 +26,9 @@ public class Main {
 		}
 		else if(escolhaMenu == 2) {
 			gerenciarPalavras(matrizJogo);
+		}
+		else if(escolhaMenu == 3) {
+			jogar(matrizJogo);
 		}
 
 		//lerMatriz(matrizJogo);
@@ -282,6 +285,83 @@ public class Main {
 		sc.close();
 	}
 
+	public static void jogar(String[][] matrizJogo) {
+		Scanner sc = new Scanner(System.in);
+		
+		String[] palavrasJogo = new String [10];
+		String temaJogado, letra;
+		int posicao = 0;
+		int erros = 0;
+		int tentativas = 5;
+		int opcao = 0;
+		
+		System.out.println("----------------------");
+		System.out.println("1. Iniciar Jogo");
+		System.out.println("0. Sair");
+		System.out.println("----------------------");
+		opcao = sc.nextInt();
+		sc.nextLine();
+		
+		while(opcao != 0) {
+			
+			System.out.print("ESCOLHA UM TEMA PARA INICIAR O JOGO:");
+			for(int i=0; i < 10; i++) {
+				System.out.print(matrizJogo[i][0] + " ");
+			}
+			System.out.println();
+			temaJogado = sc.nextLine().toLowerCase();
+			
+			//preenchendo um vetor com as palavras do tema escolhido
+			for(int i=1; i < 11; i++) {
+				for(int j=1; j < 11; j++) {
+					if(temaJogado.equals(matrizJogo[i][0])) {
+						//System.out.print(matrizJogo[i][j] + " ");
+						palavrasJogo[posicao] = matrizJogo[i][j];
+						posicao++;
+					}
+				}
+			}
+			
+			//sorteando uma palavra
+			System.out.println();
+			Random sorteio = new Random();
+			int indiciePalavra = sorteio.nextInt(palavrasJogo.length);
+			String palavraSorteada = palavrasJogo[indiciePalavra];
+			System.out.println("A palavra é: "+ palavraSorteada);
+			
+			//separando em letras
+			String[] letras = palavraSorteada.split("");
+			System.out.println("A palavra tem " + letras.length + " letras.");
+			
+			while(erros != 5) {	
+				System.out.println("Informe uma letra de A a Z: ");
+				letra = sc.nextLine();
+				for(int i= 0; i < letras.length; i++) {
+					if(letra.equals(letras[i])) {
+						//System.out.println("Você acertou");
+						System.out.println("A letra está na posição: " + i );	
+						break;
+					}
+					else {
+						System.out.println("Você erro!");
+						erros++;
+						tentativas--;
+						System.out.println("Restam apenas " + tentativas + " tentativas.");
+						//break;
+					}
+				}
+			}
+			
+			System.out.println("----------------------");
+			System.out.println("1. Iniciar Jogo");
+			System.out.println("0. Sair");
+			System.out.println("----------------------");
+			opcao = sc.nextInt();
+			sc.nextLine();
+		}
+		
+		sc.close();
+	}
 }
 
 
