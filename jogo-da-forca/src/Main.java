@@ -130,7 +130,7 @@ public class Main {
 				//Cadastro de Temas
 				System.out.print("Informe o tema que deseja cadastrar: ");
 				novoTema = sc.nextLine().toLowerCase();
-				for(int i =0; i< 10; i++) {
+				for(int i =0; i < 50; i++) {
 					if(novoTema.equals(matrizTemas[i][0])) {
 						System.out.println("O tema já existe. Impossivel cadastrar!");
 						break;
@@ -146,16 +146,19 @@ public class Main {
 				//Excluir Temas
 				System.out.print("Informe o tema que deseja Excluir: ");
 				excluiTema = sc.nextLine().toLowerCase();
-				for(int i = 0; i< 10; i++) {
-					if(excluiTema.equals(matrizTemas[i][0])) {
-						if(matrizTemas[i][1] == null) {
-							matrizTemas[i][0] = null;
-							System.out.println("Tema excluido...");
-						}
-						else {
-							System.out.println("Não foi possível excluir o tema. Verifique se existem palavras cadastradas nesse tema.");
+				for(int i = 0; i < 50 ; i++) {
+					if(matrizTemas[i][0] != null) {
+						if(excluiTema.equals(matrizTemas[i][0])) {
+							if(matrizTemas[i][1] == null) {
+								matrizTemas[i][0] = null;
+								System.out.println("Tema excluido...");
+							}
+							else {
+								System.out.println("Não foi possível excluir o tema. Verifique se existem palavras cadastradas nesse tema.");
+							}
 						}
 					}
+					
 					
 				}
 			}
@@ -164,11 +167,13 @@ public class Main {
 				System.out.print("Informe o tema que deseja buscar: ");
 				buscaTema = sc.nextLine().toLowerCase();
 				
-				for (int i = 0; i < 10; i++) {
-					if (buscaTema.equals(matrizTemas[i][0])) {
-						System.out.println("Tema encontrado: " + matrizTemas[i][0]);
-						contPesquisa++;
-						break;
+				for (int i = 0; i < 50; i++) {
+					if(matrizTemas[i][0] != null) {
+						if (buscaTema.equals(matrizTemas[i][0])) {
+							System.out.println("Tema encontrado: " + matrizTemas[i][0]);
+							contPesquisa++;
+							break;
+						}
 					}
 				}
 				
@@ -288,7 +293,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		
 		String[] palavrasJogo = new String [10];
-		String temaJogado, letra, palavraTentada;
+		String temaJogado, letra;
 		int posicao = 0;
 		int erros = 0;
 		int tentativas = 5;
@@ -305,7 +310,7 @@ public class Main {
 		
 		while(opcao != 0) {
 			System.out.print("ESCOLHA UM TEMA PARA INICIAR O JOGO:");
-			for(int i=0; i < 10; i++) {
+			for(int i=0; i < 5; i++) {
 				System.out.print(matrizJogo[i][0] + " ");
 			}
 			System.out.println();
@@ -315,7 +320,6 @@ public class Main {
 			for(int i=1; i < 11; i++) {
 				for(int j=1; j < 11; j++) {
 					if(temaJogado.equals(matrizJogo[i][0])) {
-						//System.out.print(matrizJogo[i][j] + " ");
 						palavrasJogo[posicao] = matrizJogo[i][j];
 						posicao++;
 					}
@@ -327,7 +331,7 @@ public class Main {
 			Random sorteio = new Random();
 			int indiciePalavra = sorteio.nextInt(palavrasJogo.length);
 			String palavraSorteada = palavrasJogo[indiciePalavra];
-			System.out.println("A palavra é: "+ palavraSorteada);
+			//System.out.println("A palavra é: "+ palavraSorteada);
 			
 			//separando em letras
 			String[] letras = palavraSorteada.split("");
