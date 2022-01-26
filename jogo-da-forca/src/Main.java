@@ -99,7 +99,7 @@ public class Main {
 		matrizJogo[4][10] = "urubu";
 		
 		for(int i =0; i < 10; i++) {
-			for (int j= 0; j < 20 ; j++) {
+			for (int j= 0; j < 12 ; j++) {
 				System.out.print(matrizJogo[i][j] + " ");
 			}
 			System.out.println();
@@ -180,7 +180,6 @@ public class Main {
 		
 		sc.close();
 	}
-	
 	
 	public static void gerenciarPalavras(String[][] matrizPalavras) {
 		Scanner sc = new Scanner(System.in);
@@ -289,11 +288,13 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		
 		String[] palavrasJogo = new String [10];
-		String temaJogado, letra;
+		String temaJogado, letra, palavraTentada;
 		int posicao = 0;
 		int erros = 0;
 		int tentativas = 5;
 		int opcao = 0;
+		int acertos = 0;
+		int formacaoPalavra = 0;
 		
 		System.out.println("----------------------");
 		System.out.println("1. Iniciar Jogo");
@@ -303,7 +304,6 @@ public class Main {
 		sc.nextLine();
 		
 		while(opcao != 0) {
-			
 			System.out.print("ESCOLHA UM TEMA PARA INICIAR O JOGO:");
 			for(int i=0; i < 10; i++) {
 				System.out.print(matrizJogo[i][0] + " ");
@@ -336,19 +336,37 @@ public class Main {
 			while(erros != 5) {	
 				System.out.println("Informe uma letra de A a Z: ");
 				letra = sc.nextLine();
-				for(int i= 0; i < letras.length; i++) {
-					if(letra.equals(letras[i])) {
-						//System.out.println("Você acertou");
-						System.out.println("A letra está na posição: " + i );	
-						break;
+				
+					for(int i= 0; i < letras.length; i++) {
+						if(letra.equals(letras[i])) {
+							System.out.println("Você acertou");
+							System.out.println("A letra está na posição: " + i );	
+							formacaoPalavra++;
+							acertos++;
+						}
 					}
-					else {
-						System.out.println("Você erro!");
-						erros++;
-						tentativas--;
-						System.out.println("Restam apenas " + tentativas + " tentativas.");
-						//break;
-					}
+				
+				if(formacaoPalavra == letras.length) {
+					System.out.println("------------------------------------");
+					System.out.println("Parabéns! Você acertou a palavra.");
+					System.out.println("A palavra é: "+ palavraSorteada);
+					System.out.println("------------------------------------");
+					erros = 5;
+					break;
+					
+				}
+				else if(acertos == 0) {
+					System.out.println("Você erro!");
+					erros++;
+					tentativas--;
+					System.out.println("Restam apenas " + tentativas + " tentativas.");	
+				}
+				acertos = 0;
+				
+				if(erros == 5) {
+					System.out.println("----------------");
+					System.out.println("Você perdeu!");
+					System.out.println("----------------");
 				}
 			}
 			
