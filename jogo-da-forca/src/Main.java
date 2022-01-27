@@ -285,10 +285,8 @@ public class Main {
 
 	public static void jogar(String[][] matrizJogo) {
 		String[] palavrasJogo = new String [50];
-		String[] letraTentada = new String[10];
 		String temaJogado, letra, palavraSorteada;
 		int posicao = 0;
-		int posicaoLetra = 0;
 		int erros = 0;
 		int tentativas = 5;
 		int opcao = 0;
@@ -343,11 +341,9 @@ public class Main {
 				
 					for(int i= 0; i < letras.length; i++) {
 						if(letra.equals(letras[i])) {
-							//letraTentada[posicaoLetra] = letra;
 							System.out.println("Você acertou");
 							int pos = i + 1;
 							System.out.println("A letra está na posição: " + pos );	
-							posicaoLetra++;
 							formacaoPalavra++;
 							acertos++;
 							
@@ -364,13 +360,12 @@ public class Main {
 					
 				}
 				else if(acertos == 0) {
-					//letraTentada[posicaoLetra] = letra;
 					System.out.println("Você errou!");
-					posicaoLetra++;
 					erros++;
 					tentativas--;
 					System.out.println("Restam apenas " + tentativas + " tentativas.");	
 				}
+				
 				acertos = 0;
 				
 				if(erros == 5) {
@@ -378,6 +373,7 @@ public class Main {
 					System.out.println("Você perdeu!");
 					System.out.println("----------------");
 				}
+				
 			}
 			
 			System.out.println("----------------------");
