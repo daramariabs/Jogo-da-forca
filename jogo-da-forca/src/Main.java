@@ -1,42 +1,42 @@
 import java.util.Scanner;
 import java.util.Random;
 public class Main {
-
+	static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+		
 		int escolhaMenu;
 		String[][] matrizJogo = new String[50][50];
 		
-		lerMatriz(matrizJogo);
+		do {
+			preencherMatriz(matrizJogo);
+			System.out.println("======================");
+			System.out.println("         MENU         ");
+			System.out.println("----------------------");
+			System.out.println("1. Gerenciar Temas");
+			System.out.println("2. Gerenciar Palavras");
+			System.out.println("3. Jogar");
+			System.out.println("4. Sair");
+			System.out.println("======================");
+			System.out.print("O que você deseja fazer? ");
+			escolhaMenu = sc.nextInt();
+			
+			if (escolhaMenu == 1) {
+				gerenciarTemas(matrizJogo);
+			}
+			else if(escolhaMenu == 2) {
+				gerenciarPalavras(matrizJogo);
+			}
+			else if(escolhaMenu == 3) {
+				jogar(matrizJogo);
+			}
+			
+		}while(escolhaMenu != 4);
 		
-		System.out.println("----------------------");
-		System.out.println("MENU");
-		System.out.println("----------------------");
-		System.out.println("1. Gerenciar Temas");
-		System.out.println("2. Gerenciar Palavras");
-		System.out.println("3. Jogar");
-		System.out.println("4. Sair");
-		System.out.println("----------------------");
-		System.out.print("O que você deseja fazer? ");
-		escolhaMenu = sc.nextInt();
-		sc.nextLine();
 		
-		if (escolhaMenu == 1) {
-			gerenciarTemas(matrizJogo);
-		}
-		else if(escolhaMenu == 2) {
-			gerenciarPalavras(matrizJogo);
-		}
-		else if(escolhaMenu == 3) {
-			jogar(matrizJogo);
-		}
-
-		//lerMatriz(matrizJogo);
 		
-		sc.close();	
 	}
 	
-	public static void lerMatriz(String[][] matrizJogo) {
+	public static void preencherMatriz(String[][] matrizJogo) {
 		
 		matrizJogo[0][0] = "cidade";
 		matrizJogo[0][1] = "palmas";
@@ -98,17 +98,15 @@ public class Main {
 		matrizJogo[4][9] = "papagaio";
 		matrizJogo[4][10] = "urubu";
 		
-		for(int i =0; i < 10; i++) {
-			for (int j= 0; j < 12 ; j++) {
-				System.out.print(matrizJogo[i][j] + " ");
-			}
-			System.out.println();
-		}
+//		for(int i =0; i < 10; i++) {
+//			for (int j= 0; j < 12 ; j++) {
+//				System.out.print(matrizJogo[i][j] + " ");
+//			}
+//			System.out.println();
+//		}
 	}
 	
 	public static void gerenciarTemas(String[][] matrizTemas) {
-		Scanner sc = new Scanner(System.in);
-		
 		int opcao;
 		int contPesquisa = 0;
 		String novoTema = "";
@@ -116,13 +114,14 @@ public class Main {
 		String buscaTema = "";
 		
 		do {
-			System.out.println("--------------------");
-			System.out.println("Grenciador de temas");
+			System.out.println("-----------------------");
+			System.out.println(" GERENCIADOR DE TEMAS  ");
+			System.out.println("-----------------------");
 			System.out.println("1. Cadastrar Tema");
 			System.out.println("2. Excluir Tema ");
 			System.out.println("3. Buscar tema ");
 			System.out.println("0. Sair ");
-			System.out.println("--------------------");
+			System.out.println("-----------------------");
 			opcao = sc.nextInt();
 			sc.nextLine();
 			
@@ -182,26 +181,23 @@ public class Main {
 				}	
 			}	
 		}while(opcao != 0);	
-		
-		sc.close();
 	}
 	
 	public static void gerenciarPalavras(String[][] matrizPalavras) {
-		Scanner sc = new Scanner(System.in);
-		
 		int opcao, contPesquisa;
 		contPesquisa = 0;
 		String temaEscolhido, palavraCadastro, palavraExcluida, buscaPalavra, buscaTema;
 		
 		do {
-			System.out.println("--------------------");
-			System.out.println("GERENCIADOS DE PALAVRAS");
+			System.out.println("--------------------------");
+			System.out.println("  GERENCIADOS DE PALAVRAS ");
+			System.out.println("--------------------------");
 			System.out.println("1. Cadastrar Palavras");
 			System.out.println("2. Excluir Palavras ");
 			System.out.println("3. Buscar Palavras ");
 			System.out.println("4. Listar Palavras pelo tema ");
 			System.out.println("0. Sair ");
-			System.out.println("--------------------");
+			System.out.println("--------------------------");
 			opcao = sc.nextInt();
 			sc.nextLine();
 			
@@ -209,11 +205,11 @@ public class Main {
 				System.out.println("Escolha um TEMA para cadastrar uma palavra: ");
 				temaEscolhido = sc.nextLine().toLowerCase();
 				
-				for(int i = 0; i < 10; i++) {
+				for(int i = 0; i < 50; i++) {
 					if(temaEscolhido.equals(matrizPalavras[i][0])) {
 						System.out.println("Informe a palavra: ");
 						palavraCadastro = sc.nextLine().toLowerCase();
-						for(int j = 1; j < 10; j++) {
+						for(int j = 1; j < 50; j++) {
 							if(palavraCadastro.equals(matrizPalavras[i][j])) {
 								System.out.println("Essa palavra ja existe!");
 								break;
@@ -226,10 +222,11 @@ public class Main {
 						}
 						contPesquisa++;
 					}
+						
+				
 				}
 				if(contPesquisa == 0) {
-					System.out.println("Tema não encontrado!");
-					
+					System.out.println("Tema não encontrado!");	
 				}
 			}
 			else if(opcao == 2) {
@@ -237,8 +234,8 @@ public class Main {
 				System.out.println("Informe a palavra que deseja exluir: ");
 				palavraExcluida = sc.nextLine().toLowerCase();
 				
-				for (int i = 0; i < 10; i++) {
-					for(int j = 1; j < 10; j++) {
+				for (int i = 0; i < 50; i++) {
+					for(int j = 1; j < 50; j++) {
 						if(palavraExcluida.equals(matrizPalavras[i][j])) {
 							matrizPalavras[i][j] = null;
 							System.out.println("Palavra excluida");
@@ -252,8 +249,8 @@ public class Main {
 				System.out.print("Informe a PALAVRA que deseja buscar: ");
 				buscaPalavra = sc.nextLine().toLowerCase();
 				
-				for (int i = 0; i < 10; i++) {
-					for(int j = 0; j < 10; j ++) {
+				for (int i = 0; i < 50; i++) {
+					for(int j = 0; j < 50; j ++) {
 						if (buscaPalavra.equals(matrizPalavras[i][j])) {
 							System.out.println("PALAVRA encontrada no tema: " + matrizPalavras[i][0].toUpperCase());
 							contPesquisa++;
@@ -270,10 +267,10 @@ public class Main {
 				System.out.print("Informe o TEMA que deseja litar as palavras: ");
 				buscaTema = sc.nextLine().toLowerCase();
 				
-				for (int i = 0; i < 20; i++) {
+				for (int i = 0; i < 50; i++) {
 					if (buscaTema.equals(matrizPalavras[i][0])) {
 						System.out.print("No tema "+ matrizPalavras[i][0] + " temos as palavras: ");
-						for(int j = 1; j < 20; j ++) {
+						for(int j = 1; j < 50; j ++) {
 							System.out.print(matrizPalavras[i][j] + " ");		
 						}
 						
@@ -284,17 +281,14 @@ public class Main {
 			}
 			
 		}while(opcao != 0);
-			
-		
-		sc.close();
 	}
 
 	public static void jogar(String[][] matrizJogo) {
-		Scanner sc = new Scanner(System.in);
-		
-		String[] palavrasJogo = new String [10];
-		String temaJogado, letra;
+		String[] palavrasJogo = new String [50];
+		String[] letraTentada = new String[10];
+		String temaJogado, letra, palavraSorteada;
 		int posicao = 0;
+		int posicaoLetra = 0;
 		int erros = 0;
 		int tentativas = 5;
 		int opcao = 0;
@@ -302,51 +296,61 @@ public class Main {
 		int formacaoPalavra = 0;
 		
 		System.out.println("----------------------");
-		System.out.println("1. Iniciar Jogo");
-		System.out.println("0. Sair");
+		System.out.println("   1. Iniciar Jogo    ");
+		System.out.println("   0. Sair            ");
 		System.out.println("----------------------");
 		opcao = sc.nextInt();
 		sc.nextLine();
 		
 		while(opcao != 0) {
 			System.out.print("ESCOLHA UM TEMA PARA INICIAR O JOGO:");
-			for(int i=0; i < 5; i++) {
+			for(int i=0; i < 50; i++) {
 				System.out.print(matrizJogo[i][0] + " ");
 			}
 			System.out.println();
 			temaJogado = sc.nextLine().toLowerCase();
 			
 			//preenchendo um vetor com as palavras do tema escolhido
-			for(int i=1; i < 11; i++) {
-				for(int j=1; j < 11; j++) {
-					if(temaJogado.equals(matrizJogo[i][0])) {
-						palavrasJogo[posicao] = matrizJogo[i][j];
-						posicao++;
-					}
+			for(int i=0; i < 50; i++) {
+				for(int j=1; j < 50; j++) {
+					if(matrizJogo[i][0] != null) {
+						if(temaJogado.equals(matrizJogo[i][0])) {
+							palavrasJogo[posicao] = matrizJogo[i][j];
+							posicao++;
+						}
+					}		
 				}
 			}
+			posicao = 0;
 			
 			//sorteando uma palavra
 			System.out.println();
 			Random sorteio = new Random();
-			int indiciePalavra = sorteio.nextInt(palavrasJogo.length);
-			String palavraSorteada = palavrasJogo[indiciePalavra];
-			//System.out.println("A palavra é: "+ palavraSorteada);
+			do {
+				int indiciePalavra = sorteio.nextInt(palavrasJogo.length);
+				palavraSorteada = palavrasJogo[indiciePalavra];
+				
+			}while(palavraSorteada == null);
 			
 			//separando em letras
 			String[] letras = palavraSorteada.split("");
 			System.out.println("A palavra tem " + letras.length + " letras.");
 			
+			erros = 0;
 			while(erros != 5) {	
 				System.out.println("Informe uma letra de A a Z: ");
 				letra = sc.nextLine();
 				
 					for(int i= 0; i < letras.length; i++) {
 						if(letra.equals(letras[i])) {
+							//letraTentada[posicaoLetra] = letra;
 							System.out.println("Você acertou");
-							System.out.println("A letra está na posição: " + i );	
+							int pos = i + 1;
+							System.out.println("A letra está na posição: " + pos );	
+							posicaoLetra++;
 							formacaoPalavra++;
 							acertos++;
+							
 						}
 					}
 				
@@ -360,7 +364,9 @@ public class Main {
 					
 				}
 				else if(acertos == 0) {
-					System.out.println("Você erro!");
+					//letraTentada[posicaoLetra] = letra;
+					System.out.println("Você errou!");
+					posicaoLetra++;
 					erros++;
 					tentativas--;
 					System.out.println("Restam apenas " + tentativas + " tentativas.");	
@@ -381,8 +387,6 @@ public class Main {
 			opcao = sc.nextInt();
 			sc.nextLine();
 		}
-		
-		sc.close();
 	}
 }
 
